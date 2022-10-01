@@ -20,7 +20,7 @@ export default class Food extends React.PureComponent{
         return <div>
             <div style={{display:'flex',alignItems: 'center'}}>
                 <h1>{this.props.data.name}</h1>
-                <button onClick={this.showPicture} style={{height:40,marginRight:2,marginLeft:'auto',display:'block'}}>{this.state.status}</button>
+                <button onClick={this.showPicture} style={{height:40,marginRight:20,marginLeft:'auto',display:'block'}}>{this.state.status}</button>
             </div>
             <p>{this.props.data.discription}</p>
             <img src={this.props.data.picture} alt='this is a example render' hidden={this.state.hide} style={{textIndent:-99999}}></img>
@@ -28,4 +28,4 @@ export default class Food extends React.PureComponent{
             <hr style={{borderTop:'2px solid'}}></hr>
         </div>
     }
-}
+} 
