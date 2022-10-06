@@ -30,6 +30,14 @@ export default class Foods extends React.Component{
             picture: "./assets/images/bilibili.jpeg"
         },
     ]
+    // componentDidMount(){
+
+    // }
+
+    // async getFoodList(){
+        
+    // }
+
     listItem = this.foodlist.map((item)=>
     <Food 
     data={item}
