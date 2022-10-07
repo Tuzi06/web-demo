@@ -7,7 +7,7 @@ routeSetup.get('/',(req,res)=>{
     const keyword = req.body.keyword
 
     if(username in database){
-        res.status(201).send('username has already been use')
+        res.status(201).send({data:'username has already been use'})
         console.log('nooooooooooooooooooooooo')
     }
     else{
