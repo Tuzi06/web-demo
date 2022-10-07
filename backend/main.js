@@ -25,8 +25,8 @@ app.use('/setup',routeSetup)
 
 https.createServer(
     {
-        key: fs.readFileSync(path.join(path.resolve('.'),"backend/key.pem")),
-        cert: fs.readFileSync(path.join(path.resolve('.'),"backend/cert.pem")),
+        key: fs.readFileSync(path.join(path.resolve('.'),".cert/key.pem")),
+        cert: fs.readFileSync(path.join(path.resolve('.'),".cert/cert.pem")),
       },
     app
     ).listen(5002,(err,res) => {
