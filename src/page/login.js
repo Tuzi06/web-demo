@@ -13,11 +13,7 @@ export default class Login extends React.PureComponent{
     async submit(){
         console.log('login button clicked')
         console.log(this.state.username, ' ', this.state.password)
-        await Axios.get(`https://localhost:5002/login?${this.state.username}=${this.state.password}`,{
-            header:{
-                'Access-Control-Allow-Origin': '*'
-            }
-        }).then(res=>{
+        await Axios.get(`https://localhost:5002/login?${this.state.username}=${this.state.password}`).then(res=>{
             console.log(res.data)
         })
     }
