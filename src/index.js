@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route,Link,Outlet} from "react-router-dom";
+import { BrowserRouter, Routes, Route,Link,Outlet} from "react-router-dom"
 import Foods from './page/foods.js'
 import Drinks from './page/dinks.js'
 import Login from './page/login.js'
 import Pay from "./page/payment.js"
-
-const Layout =()=>{
-    console.log('layout page')
+import Register from './page/register.js'
+function Layout() {
+    console.log('layout page');
     return (
         <>
             <nav>
@@ -20,7 +20,7 @@ const Layout =()=>{
             </nav>
             <Outlet></Outlet>
         </>
-    )
+    );
 }
 
 function App(){
@@ -32,6 +32,7 @@ function App(){
                     <Route path='/drink' element = {<Drinks/>}></Route>
                     <Route path='/login' element = {<Login/>}/>
                     <Route path='/payment' element = {<Pay/>}/>
+                    <Route path='/register' element = {<Register/>}/>
                     <Route path="*" element={<h1 style={{height:'70%'}}>404</h1>} />
                 </Route>
             </Routes>

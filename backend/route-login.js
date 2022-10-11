@@ -1,19 +1,35 @@
 const database = require('./data.js')
-
+const cryptoJS = require('crypto-js')
 const express = require('express')
 const routeLogin = express.Router()
-routeLogin.get('/',(req,res)=>{
-    console.log(req.query)
-    const username = req.query.key
-    const keyword = req.query.value
-
-    if(!(username in database) || database[username]!== keyword){
-        res.status(202).send({data:'username or keyword is wrong'})
-        console.log('?????????')
+routeLogin.post('/',(req,res)=>{
+    console.log(req.body)
+    try{
+        var data = JSON.parse(cryptoJS.AES.decrypt(req.body.encrypt, "Bilibili kanpai").toString(cryptoJS.enc.Utf8));
+        console.log('data: ',data)
+        console.log('end decrypt')
     }
-    else{
-        res.status(200).send({success:true,data:'you have login'})
+    catch(err){
+        console.log('there is something wrong')
+        res.status(203).send({'message':'data has broken'})
+        return
     }
-    res.status(200)
+    console.log(typeof data.username)
+    console.log(typeof data.password)
+    console.log(data.usename in database)
+    try{
+        if(!(data.username in database) || database[data.username]!== data.password){
+            res.status(202).send({message:'username or keyword is wrong'})
+            console.log('?????????')
+        }
+        else{
+            res.status(200).send({success:true,data:'you have login'})
+        }
+    }   
+    catch(err){
+        console.log(err)
+        res.status(500).send({'message':err})
+    }
+    // res.status(200).json({1: '???????????????????????????????'})
 })
 module.exports = routeLogin

@@ -2,14 +2,21 @@ const express = require('express')
 const https = require('https')
 const path = require('path')
 const fs = require('fs')
+const cors = require('cors')
+
 const app = express()
 const routeLogin = require('./route-login')
 const routeSetup = require('./route-setup')
-app.use((req, res, next) => {
-    // res.header('Access-Control-Allow-Origin', 'https://localhost:3001');
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-  });
+
+app.use(
+  cors()
+  // (req, res, next) => {
+  //   // res.header('Access-Control-Allow-Origin', 'https://localhost:3001');
+  //   res.header('Access-Control-Allow-Origin', '*');
+  //   console.log(res.header)
+  //   next();
+  // }
+  );
 
 app.use('/',express.urlencoded({extended: false}))
 app.use('/',express.json())
