@@ -29,7 +29,7 @@ export default class Register extends React.PureComponent{
         const encrypt = CryptoJS.AES.encrypt(data, "Bilibili kanpai").toString();
         console.log(encrypt)
         await Axios.post(`https://localhost:5002/setup`,{encrypt}).then((res)=>{
-                console.log(res.status,res.message)
+                console.log(res.status,res.data.message)
             },
             (error) => {
                 console.log(error);
