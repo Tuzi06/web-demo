@@ -1,8 +1,6 @@
 import React from 'react'
 import Food from './component/food.js'
 export default class Foods extends React.Component{
-
-
     foodlist = [
         {
             name: 'title 1',

@@ -3,6 +3,7 @@ import React from 'react'
 import Axios from 'axios'
 import CryptoJS from 'crypto-js'
 import {Link} from "react-router-dom";
+import{GoogleLogin,GoogleOAuthProvider} from '@react-oauth/google'
 
 export default class Login extends React.PureComponent{
     constructor(){
@@ -55,6 +56,17 @@ export default class Login extends React.PureComponent{
             <input type="text" id="password" onChange={e=>{this.updatePassword(e)}} style={{marginTop:1}}/><br></br>
             <button type="button" onClick={this.submit}>LOGIN</button>
             <nav><Link to='/register'>Register</Link></nav>
+            <GoogleOAuthProvider clientId = '682090313848-6558lrp1b7iquvjfmag2ge5ccsvkvs5s.apps.googleusercontent.com'>
+                <GoogleLogin
+                    onSuccess={credentialResponse => {
+                        console.log(credentialResponse);
+                    }}
+                    onError={() => {
+                        console.log('Login Failed');
+                    }}
+                    useOneTap
+                />
+            </GoogleOAuthProvider>
             <h3>login page end</h3>
             {/* <form action="/https://localhost:5002/login" method="get">
                 <label for="fname">Username:</label>

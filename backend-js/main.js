@@ -36,7 +36,7 @@ https.createServer(
         cert: fs.readFileSync(path.join(path.resolve('.'),".cert/cert.pem")),
       },
     app
-    ).listen(5002,(err,res) => {
+    ).listen(5000,(err,res) => {
         console.log("The server is on.......")
     
         if (err){
